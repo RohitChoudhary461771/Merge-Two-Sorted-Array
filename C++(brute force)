@@ -1,0 +1,39 @@
+#include<vector>
+
+void mergeTwoSortedArraysWithoutExtraSpace(vector<long long> &a, vector<long long> &b){
+	
+	vector<int>c;
+	int i=0,j=0;
+	int n=a.size();
+	int m=b.size();
+
+	while(i<n && j<m){
+		if(a[i]<=b[j]){
+			c.push_back(a[i]);
+			i++;
+		}
+		else{
+			c.push_back(b[j]);
+			j++;
+		}
+	}
+	while(i<n){
+		c.push_back(a[i]);
+		i++;
+	}
+	while(j<m){
+		c.push_back(b[j]);
+		j++;
+	}
+
+	for( i=0;i<(n+m);i++){
+		if(i<n){
+			a[i]=c[i];
+		}
+		else{
+			b[i-n]=c[i];
+		}
+		
+	}
+
+}
